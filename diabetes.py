@@ -10,7 +10,6 @@ from sklearn import datasets
 #how many sameples and How many features?
 
 
-
 # What does feature s6 represent?
 
 
