@@ -30,3 +30,31 @@ plt.tight_layout()
 plt.show()
 
 
+
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=7)
+knn.fit(digits.data, digits.target)
+
+from sklearn.model_selection import train_test_split
+
+data_train, data_test, target_train, target_test = train_test_split(
+    digits.data, digits.target, random_state=11)
+
+print(data_train.shape)
+print(target_train.shape)
+print(data_test.shape)
+print(target_test.shape)
+
+predicted = knn.predict(data_test)
+print(predicted[:20])
+expected = target_test
+print(expected[:20])
+
+wrong = [(p, e) for (p, e) in zip(predicted, expected) if p != e]
+print(wrong)
+print(len(wrong))
+
+
+confusion = confusion_matrix(expected, predicted)
+print(confusion)
+
